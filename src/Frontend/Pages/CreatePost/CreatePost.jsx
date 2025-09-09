@@ -27,8 +27,7 @@ export default function CreatePost() {
                 <TextArea onChange={handleDescriptionChange} maxLength={500}/>
                 <SuccessButton>Create</SuccessButton>
             </form>
-            <h2 className={styles.preview}>Preview</h2>
-            <PostCard headlineText={headline} descriptionText={description}/>
+            <PostCard headline={headline} description={description}/>
         </>
     )
 }
