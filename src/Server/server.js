@@ -20,6 +20,14 @@ app.get('/api/posts', async (req, res) => {
     res.json(rows)
 })
 
+app.post('/api/addPost', async (req, res) => {
+    const request = req.body
+    console.log(request)
+    await database.execute(`INSERT INTO posts (title, content, author_id) VALUES ("${request.headline}", "${request.description}", ${request.author})`)
+    res.json({ message: 'The post was created successfully'}).status(201)
+
+})
+
 app.get('/*', (req, res) => {
     res.sendFile(resolve(__dirname, '../../dist/', 'index.html'))
 })

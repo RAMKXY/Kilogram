@@ -6,8 +6,16 @@ import {useState} from "react";
 import styles from "./CreatePost.module.css"
 
 export default function CreatePost() {
+    const [author, setAuthor] = useState('')
     const [headline, setHeadline] = useState('')
     const [description, setDescription] = useState('')
+
+    const [resultMessage, setResultMessage] = useState('')
+    const [isShowResultMessage, setIsShowResultMessage] = useState(false)
+
+    function handleAuthorChange(e){
+        setAuthor(e.target.value)
+    }
 
     function handleHeadlineChange(e) {
         setHeadline(e.target.value)
@@ -17,17 +25,40 @@ export default function CreatePost() {
         setDescription(e.target.value)
     }
 
+    async function handlePostRequest(e){
+        e.preventDefault()
+
+        const response = await fetch('http://localhost:3000/api/addPost', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                author: author,
+                headline: headline,
+                description: description
+            })
+        })
+
+        const responseJSON = await response.json()
+
+        setResultMessage(responseJSON.message)
+        setIsShowResultMessage(true)
+
+    }
+
     return (
         <>
             <h1 className={styles.Headline}>Create Post</h1>
-            <form>
+            <form onSubmit={handlePostRequest}>
+                <h2>Enter a author</h2>
+                <TextInput onChange={handleAuthorChange} maxLength={50}/>
                 <h2>Enter a headline</h2>
                 <TextInput onChange={handleHeadlineChange} maxLength={100}/>
                 <h2>Enter a description</h2>
                 <TextArea onChange={handleDescriptionChange} maxLength={500}/>
-                <SuccessButton>Create</SuccessButton>
+                <SuccessButton type="submit">Create</SuccessButton>
             </form>
-            <PostCard headline={headline} description={description}/>
+            <PostCard author={author} headline={headline} description={description}/>
+            {isShowResultMessage && <h1 className={styles.resultMessage}>{resultMessage}</h1>}
         </>
     )
 }
