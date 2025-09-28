@@ -9,6 +9,8 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.1s ease;
+    margin-top: var(--SuccessButton-margin-top, 0px);
+    margin-bottom: var(--SuccessButton-margin-bottom, 0px);
 }
 .SuccessButton:hover{
     background-color: #1a66e0;

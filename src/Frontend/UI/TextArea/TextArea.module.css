@@ -2,7 +2,7 @@
     border: none;
     border-radius: 12px;
     transition: box-shadow 0.3s;
-    background-color: #171923;
+    background-color: #17181e;
     color: rgba(255, 255, 255, 0.8);
     font-size: 16px;
     height: 116px;
@@ -10,7 +10,6 @@
     padding: 12px 16px;
     width: 673px;
     font-weight: 500;
-    margin-bottom: 25px;
 }
 .TextArea:focus{
     outline: none;

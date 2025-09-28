@@ -1,12 +1,12 @@
 import styles from "./TextArea.module.css"
 
-export default function TextArea({ onChange, maxLength }){
+export default function TextArea({ onChange, maxLength, placeholder = "Enter text" }){
     return(
         <>
             <textarea
                 onChange={onChange}
                 className={styles.TextArea}
-                placeholder={"Enter text"}
+                placeholder={placeholder}
                 maxLength={maxLength}
             />
             <br/>

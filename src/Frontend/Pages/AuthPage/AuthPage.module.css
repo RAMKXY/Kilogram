@@ -1,0 +1,16 @@
+.WebSiteName {
+    font-size: 65px;
+    margin-bottom: 20px;
+    color: #1a66e0;
+}
+.registerForm {
+    border: 3px solid #1a1a1e;
+    width: 20%;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+.registerTitle {
+    font-size: 120%;
+    margin-top: -10px;
+    margin-bottom: 30px;
+}

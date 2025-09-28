@@ -1,7 +1,10 @@
 import express from 'express'
+import dotenv from 'dotenv'
 import database from '../DataBase/DataBase.js'
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
+
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,19 +23,16 @@ app.get('/api/posts', async (req, res) => {
     res.json(rows)
 })
 
-app.post('/api/addPost', async (req, res) => {
-    const request = req.body
-    console.log(request)
-    await database.execute(`INSERT INTO posts (title, content, author_id) VALUES ("${request.headline}", "${request.description}", ${request.author})`)
-    res.json({ message: 'The post was created successfully'}).status(201)
-
-})
-
 app.get('/*', (req, res) => {
     res.sendFile(resolve(__dirname, '../../dist/', 'index.html'))
+})
+
+app.post('/api/addPost', async (req, res) => {
+    const request = req.body
+    await database.execute("INSERT INTO posts (author_id, title, content) VALUES (?, ?, ?)", [request.author, request.title, request.content])
+    res.json({ body: 'The post was created successfully' }).status(201)
 })
 
 app.listen(port, () => {
     console.log(`Server running on ${protocol}${host}:${port}/`)
 })
-

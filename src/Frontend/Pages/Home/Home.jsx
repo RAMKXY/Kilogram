@@ -1,21 +1,22 @@
 import PostCard from "../../UI/PostCard/PostCard.jsx";
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 
 export default function Home() {
     const [postList, setPostList] = useState([])
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchPosts = async () => {
             const response = await fetch('api/posts')
-            setPostList(await response.json())
+            setPostList( await response.json() )
         }
-        fetchData()
+        fetchPosts()
     }, [])
 
     return (
         <>
-            {postList.map(post =>
-                <PostCard headline={post.title} author={post.author}  description={post.content}/>
+            {
+                postList.map(post =>
+                <PostCard author={post.author} title={post.title} content={post.content}/>
             )}
         </>
     );

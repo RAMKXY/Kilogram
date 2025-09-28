@@ -1,0 +1,8 @@
+.CustomLink {
+    display: inline-block;
+    text-decoration: none;
+    cursor: default;
+    margin-top: 15px;
+    color: #6ea8fe;
+    margin-bottom: var(--CustomLink-margin-bottom, 0px);
+}

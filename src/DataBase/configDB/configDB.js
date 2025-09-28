@@ -1,9 +1,18 @@
-const dbConfig = {
-    host: '127.0.0.1',
-    user: 'root',
-    password: '1q2w3e4r5t6y7u8i9o0p',
-    database: 'kilogram',
-    port: 3306
-}
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
 
-export default dbConfig
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+dotenv.config({ path: resolve(__dirname, "../../../.env") });
+
+const dbConfig = {
+    host: process.env.HOST_DATABASE,
+    user: process.env.USER_DATABASE,
+    password: process.env.USER_PASSWORD_DATABASE,
+    database: process.env.DATABASE,
+    port: process.env.PORT_DATABASE
+};
+
+export default dbConfig;
