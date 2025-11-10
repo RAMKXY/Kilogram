@@ -1,6 +1,6 @@
 import mysql2 from "mysql2/promise";
-import dbConfig from "./configDB/configDB.js";
+import configDB from "./configDB/configDB.js";
 
-const database = mysql2.createPool(dbConfig)
+const database = await mysql2.createPool(configDB)
 
 export default database

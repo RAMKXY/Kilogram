@@ -9,7 +9,6 @@ export default function CreatePost() {
     const [author, setAuthor] = useState('')
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-
     const [resultMessage, setResultMessage] = useState('')
     const [isShowResultMessage, setIsShowResultMessage] = useState(false)
 
@@ -28,7 +27,7 @@ export default function CreatePost() {
     async function handlePostRequest(e){
         e.preventDefault()
 
-        const response = await fetch('/api/addPost', {
+        const response = await fetch('/api/create-post', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

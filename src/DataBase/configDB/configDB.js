@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 dotenv.config({ path: resolve(__dirname, "../../../.env") });
 
-const dbConfig = {
+const configDB= {
     host: process.env.HOST_DATABASE,
     user: process.env.USER_DATABASE,
     password: process.env.USER_PASSWORD_DATABASE,
@@ -15,4 +15,4 @@ const dbConfig = {
     port: process.env.PORT_DATABASE
 };
 
-export default dbConfig;
+export default configDB;

@@ -5,7 +5,6 @@ import NavigationLink from "./Components/NavigationLink/NavigationLink.jsx";
 import SiteTitle from "./Components/SiteTitle/SiteTitle.jsx";
 
 export default function MainLayout(){
-
     const { pathname } = useLocation()
 
     const pathsExceptions = ['/auth']
